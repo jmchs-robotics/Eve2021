@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc5933.Eve2019.subsystems.*;
-import org.usfirst.frc5933.Eve2019.subsystems.Arm.ArmPosition;
+
 
 
 /**
@@ -96,12 +96,6 @@ public class OI {
 
 		driverB = new JoystickButton(driverStick, 2);
 		driverB.whileHeld(new DriveStraightVision(0.5, SocketVisionSender.StartDepth, 0.4));
-
-		driverX = new JoystickButton(driverStick, 3);
-		driverX.whileHeld(new EndGameClimber(1));
-
-		driverY = new JoystickButton(driverStick, 4);
-		driverY.whenPressed(new EndGameTrigger());
 //
 //		driverBumperL = new JoystickButton(driverStick, 5);
 //		driverBumperL.whenPressed(new NullCommand());
@@ -109,8 +103,6 @@ public class OI {
 //		driverBumperR = new JoystickButton(driverStick, 6);
 //		driverBumperR.whenPressed(new NullCommand());
 //
-		driverBack = new JoystickButton(driverStick, 7);
-		driverBack.whenPressed(new EndGameClimber(-1));
 	}
 //
 //		driverStart = new JoystickButton(driverStick, 8);

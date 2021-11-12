@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc5933.Eve2019.SocketVision;
 import org.usfirst.frc5933.Eve2019.commands.*;
 import org.usfirst.frc5933.Eve2019.subsystems.*;
-import org.usfirst.frc5933.Eve2019.subsystems.Arm.ArmPosition;
 
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.cscore.UsbCamera;
@@ -55,11 +54,7 @@ public class Robot extends TimedRobot {
 	//ALL THE SUBSYSTEMS (and OI)...
 	public static OI oi;
 	public static Drivetrain drivetrain;
-	public static Arm arm;
 	public static RoboRio roborio;
-	public static Tongs grabber;
-	public static EndGameSystem ender;
-	public static TongSpinners spinner;
 
 	//the camera server and camera objects
 	public static CameraServer server;
@@ -72,12 +67,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-
-		spinner = new TongSpinners();
-		grabber = new Tongs();
-		arm = new Arm();
 		roborio = new RoboRio();
-		ender = new EndGameSystem();
 		drivetrain = new Drivetrain();
 
 		server = RobotMap.server;
@@ -89,15 +79,8 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 
 		//initialize the subsystems. These methods contain one-off initialization software.
-		arm.init();
-
-		grabber.init();
-
-		spinner.init();
 
 		drivetrain.init();
-
-		ender.init();
 
 		SmartDashboard.putString("Software Guru: ", "Eric");
 	
@@ -299,8 +282,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		drivetrain.autonomousInit();
-
-		autonomousCommand = new ArmResetTestGroup();//AutonomousTestGroup(DriverStation.getInstance().getGameSpecificMessage());
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) autonomousCommand.start();
 

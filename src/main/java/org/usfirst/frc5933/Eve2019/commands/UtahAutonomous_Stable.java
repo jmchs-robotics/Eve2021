@@ -2,7 +2,6 @@ package org.usfirst.frc5933.Eve2019.commands;
 
 import org.usfirst.frc5933.Eve2019.Robot;
 import org.usfirst.frc5933.Eve2019.SocketVisionSender;
-import org.usfirst.frc5933.Eve2019.subsystems.Arm.ArmPosition;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -45,8 +44,6 @@ public class UtahAutonomous_Stable extends CommandGroup {
 		addSequential(new DriveStraightGyro(12, 1, true));
 		
 		//every start should put the arm back down into a neutral position.
-		addSequential(new MoveArmToPos(ArmPosition.Start, false));
-
 		if(Robot.roborio.readDips(0, 5, true) == 2) { //on LEFT side of scale, put jumper on slot 1 (GND to S)
 			if(message.substring(0 , 1).equalsIgnoreCase("r") && !message.substring(1, 2).equalsIgnoreCase("l")) {// if need to score on right go past switch and barrel across field
 				addSequential(new DriveStraightGyro(220, 1, true));
@@ -73,10 +70,8 @@ public class UtahAutonomous_Stable extends CommandGroup {
 				addSequential(new GyroTurn(20, .3, .025));
 				
 			}
-			addParallel(new MoveArmToPos(ArmPosition.Switch, false));
 			addSequential(new DriveToImpact(1, .8));
 
-			addSequential(new OpenTongs(true));
 			addSequential(new EjectCube(0.2));
 			
 		} else if (Robot.roborio.readDips(0, 5, true) == 4){ //on RIGHT side of scale, put jumper on slot 2 (GND to S)
@@ -107,10 +102,8 @@ public class UtahAutonomous_Stable extends CommandGroup {
 				addSequential(new GyroTurn(-60, .7, .025));
 				addSequential(new GyroTurn(-20, .3, .025));
 
-				addSequential(new MoveArmToPos(ArmPosition.Switch, false));
 				addSequential(new DriveToImpact(.8, .8));
 
-				addSequential(new OpenTongs(true));
 				//addSequential(new EjectCube(0.1));
 			}
 
@@ -124,7 +117,6 @@ public class UtahAutonomous_Stable extends CommandGroup {
 
 			addSequential(new GyroTurn(-90, 0.4, 0.1));
 			
-			addSequential(new MoveArmToPos(ArmPosition.Exchange, false));
 			addSequential(new DriveToImpact(0.5, 0.5));
 			//spit out cube
 			addSequential(new EjectCube(1));
@@ -135,7 +127,6 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			addSequential(new DriveStraightGyro(-100, 1, true));
 
 			//don't open tongs in this case until after the cube has been ejected
-			addSequential(new MoveArmToPos(ArmPosition.Start, false));
 		
 		} else if(Robot.roborio.readDips(0, 6, true) == 32){ //in MIDDLE, jumper in slot 5: no robots will block us
 			if(message.substring(0, 1).equalsIgnoreCase("l")) {
@@ -148,8 +139,6 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			
 		} else if(message.substring(0, 1).equalsIgnoreCase("l") && Robot.roborio.readDips(0, 4, true) != 8) { //in MIDDLE, NO jumper slots 0-3... if jumper is in 3 other robot will block our left
 			//move arm to score in switch
-			addParallel(new MoveArmToPos(ArmPosition.Switch, false));
-
 			//left (if message says "l" and no other robot in our way)
 			addSequential(new GyroTurn(-40,1,.05));
 			addSequential(new DriveStraightGyro(95, 1,true));
@@ -157,12 +146,10 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			addSequential(new DriveToImpact(1,.8));
 
 			//spit out cube
-			addSequential(new OpenTongs(true));
 			addSequential(new EjectCube(0.2));
 
 		} else if(message.substring(0, 1).equalsIgnoreCase("r") && Robot.roborio.readDips(0, 5, true) != 16){ //in MIDDLE, NO jumper slots 0-4... if jumper is in 4 other robot will block our right
 			//move arm to score in switch
-			addParallel(new MoveArmToPos(ArmPosition.Switch, false));
 
 			//right (if message says "r" and no other robot in our way
 			addSequential(new GyroTurn(25,1,.05));
@@ -172,11 +159,9 @@ public class UtahAutonomous_Stable extends CommandGroup {
 
 			//spit out cube
 
-			addSequential(new OpenTongs(true));
 			addSequential(new EjectCube(0.2));
 			
 		}else if(Robot.roborio.readDips() == 4 && message.substring(1,2).equalsIgnoreCase("r")){ //on RIGHT side, Scale shot, DIPS in 2 
-			addParallel(new MoveArmToPos(ArmPosition.Scale, false));
 			addSequential(new DriveStraightGyro(225, 1, true));
 
 			addSequential(new GyroTurn(-20, 0.7, .5));
@@ -184,11 +169,9 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			addSequential(new EjectCube(1));
 			
 			addSequential(new GyroTurn(20, 0.7, .5));
-			addParallel(new MoveArmToPos(ArmPosition.CubeOnGround, false));
 			addSequential(new DriveStraightGyro(-220, 1, true));
 
 		}else if(Robot.roborio.readDips() == 2 && message.substring(1,2).equalsIgnoreCase("l")){ //on left side, Scale shot, DIPS in 1 
-			addParallel(new MoveArmToPos(ArmPosition.Scale, false));
 			addSequential(new DriveStraightGyro(225, 1, true));
 
 			addSequential(new GyroTurn(20, 0.7, .5));
@@ -196,7 +179,6 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			addSequential(new EjectCube(1));
 			
 			addSequential(new GyroTurn(-20, 0.7, .5));
-			addParallel(new MoveArmToPos(ArmPosition.CubeOnGround, false));
 			addSequential(new DriveStraightGyro(-220, 1, true));
 			
 		}else {
@@ -227,10 +209,8 @@ public class UtahAutonomous_Stable extends CommandGroup {
 			addSequential(new DriveToImpact(-1,-.8));
 
 			//don't move arm in this case until after the cube has been ejected
-			addSequential(new MoveArmToPos(ArmPosition.Start, false));
 
 		}
 		
-		addSequential(new CloseTongs(true)); //reset for driver
 	}
 }
