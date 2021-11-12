@@ -80,14 +80,9 @@ public class RobotMap {
         drivetrainRobotDrive.setExpiration(0.1);
         drivetrainRobotDrive.setMaxOutput(1.0);
         
-        //instantiate left side followers on even IDs
-        drivetrainLeftFollower1 = new WPI_TalonSRX(12);
-        drivetrainLeftFollower2 = new WPI_TalonSRX(14);
-        
+        //instantiate left side followers on even IDs        
         //instantiate right side followers on odd IDs
-        drivetrainRightFollower1 = new WPI_TalonSRX(13);
-        drivetrainRightFollower2 = new WPI_TalonSRX(15);
-        
+
         //instantiate gyro. B/c it is an SPI gyroscope, no need for calibration methods yet
         roborioGyro = new ADXRS450_Gyro();
         
@@ -95,8 +90,6 @@ public class RobotMap {
         armMotorTestBigUn = new WPI_TalonSRX(20);
         
         //instantiate sparks for cube manipulation starting at slot 0
-        tongsLeftTong = new Spark(0);
-        tongsRightTong = new Spark(1);
         
         //instantiate PCM doublesolenoid for the double piston starting from ID 0, slot 0;
         armTongsPiston = new DoubleSolenoid(0, 2, 3);
