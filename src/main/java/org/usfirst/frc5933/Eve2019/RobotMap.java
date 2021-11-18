@@ -99,7 +99,7 @@ public class RobotMap {
         tongsRightTong = new Spark(1);
         
         //instantiate PCM doublesolenoid for the double piston starting from ID 0, slot 0;
-        armTongsPiston = new DoubleSolenoid(0, 2, 3);
+        armTongsPiston = new DoubleSolenoid(0, 0, 1);
         
         //instantiate the array of digital inputs on the RIO. This contains all accessible DIPs (a bit overkill,
         //but useful for planning ahead).
