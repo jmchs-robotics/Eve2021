@@ -7,21 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class OpenTongs extends Command {
+public class DefaultPiston extends Command {
 
-	boolean useLatch;
-	
-    public OpenTongs(boolean turnOffSolenoids) {
+    public DefaultPiston() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.grabber);
-    	useLatch = turnOffSolenoids;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.grabber.openTongs();
-    	setTimeout(0.1);
+    	Robot.grabber.turnArmDefaultPistonOff();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,19 +26,15 @@ public class OpenTongs extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(useLatch)
-    		return isTimedOut();
-    	return false;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.grabber.turnArmPistonOff();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

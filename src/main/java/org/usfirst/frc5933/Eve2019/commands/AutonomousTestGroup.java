@@ -76,7 +76,7 @@ public class AutonomousTestGroup extends CommandGroup {
 			addParallel(new MoveArmToPos(ArmPosition.Switch, false));
 			addSequential(new DriveToImpact(1, .8));
 
-			addSequential(new OpenTongs(true));
+			addSequential(new ExtendTongs(true));
 			addSequential(new EjectCube(0.2));
 			
 		} else if (Robot.roborio.readDips(0, 5, true) == 4){ //on RIGHT side of scale, put jumper on slot 2 (GND to S)
@@ -110,7 +110,7 @@ public class AutonomousTestGroup extends CommandGroup {
 				addSequential(new MoveArmToPos(ArmPosition.Switch, false));
 				addSequential(new DriveToImpact(.8, .8));
 
-				addSequential(new OpenTongs(true));
+				addSequential(new ExtendTongs(true));
 				//addSequential(new EjectCube(0.1));
 			}
 
@@ -157,7 +157,7 @@ public class AutonomousTestGroup extends CommandGroup {
 			addSequential(new DriveToImpact(1,.8));
 
 			//spit out cube
-			addSequential(new OpenTongs(true));
+			addSequential(new ExtendTongs(true));
 			addSequential(new EjectCube(0.2));
 
 		} else if(message.substring(0, 1).equalsIgnoreCase("r") && Robot.roborio.readDips(0, 5, true) != 16){ //in MIDDLE, NO jumper slots 0-4... if jumper is in 4 other robot will block our right
@@ -172,7 +172,7 @@ public class AutonomousTestGroup extends CommandGroup {
 
 			//spit out cube
 
-			addSequential(new OpenTongs(true));
+			addSequential(new ExtendTongs(true));
 			addSequential(new EjectCube(0.2));
 			
 		}else if(Robot.roborio.readDips() == 4 && message.substring(1,2).equalsIgnoreCase("r")){ //on RIGHT side, Scale shot, DIPS in 2 
@@ -231,6 +231,6 @@ public class AutonomousTestGroup extends CommandGroup {
 
 		}
 		
-		addSequential(new CloseTongs(true)); //reset for driver
+		addSequential(new RetractTongs(true)); //reset for driver
 	}
 }

@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CloseTongs extends Command {
+public class RetractTongs extends Command {
 
 	boolean useLatch;
 	
-    public CloseTongs(boolean turnOffSolenoids) {
+    public RetractTongs(boolean turnOffSolenoids) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.grabber);
@@ -20,7 +20,7 @@ public class CloseTongs extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.grabber.closeTongs();
+    	Robot.grabber.RetractTongs();
     	setTimeout(0.1);
     }
 
@@ -37,7 +37,7 @@ public class CloseTongs extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.grabber.turnArmPistonOff();
+    	Robot.grabber.turnArmDefaultPistonOff();
     }
 
     // Called when another command which requires one or more of the same
