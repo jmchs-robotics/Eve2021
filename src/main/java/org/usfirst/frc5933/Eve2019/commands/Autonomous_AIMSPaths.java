@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Autonomous_AIMSPaths extends CommandGroup {
 
 	
-	public Autonomous_AIMSPaths(String message) {
+	public Autonomous_AIMSPaths() {
 		addSequential(new MoveArmToPos(ArmPosition.Start, false));
 
 		addSequential(new DriveStraightGyro(305, .99, true));
