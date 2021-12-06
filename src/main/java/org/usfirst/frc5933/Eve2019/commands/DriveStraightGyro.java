@@ -71,7 +71,7 @@ public class DriveStraightGyro extends Command {
     		coefficient = Robot.drivetrain.thresholdVBus(coefficient);
     	}
     	
-    	Robot.drivetrain.tankDrive(coefficient * (vBus - proportion), -coefficient * (vBus + proportion));
+    	Robot.drivetrain.tankDrive(coefficient * (vBus - proportion), coefficient * (vBus + proportion));
     }
 
     // Make this return true when this Command no longer needs to run execute()
