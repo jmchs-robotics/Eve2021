@@ -56,6 +56,7 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	public static Drivetrain drivetrain;
 	public static Arm arm;
+	public static Hatch hatch;
 	public static RoboRio roborio;
 	public static Tongs grabber;
 	public static EndGameSystem ender;
