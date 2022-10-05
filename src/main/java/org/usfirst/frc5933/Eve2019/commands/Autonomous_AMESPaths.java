@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class Autonomous_AIMSPaths extends CommandGroup {
+public class Autonomous_AMESPaths extends CommandGroup {
 
 	
-	public Autonomous_AIMSPaths() {
+	public Autonomous_AMESPaths() {
 
 		addSequential(new DriveStraightGyro(-325, -1, true));
 
