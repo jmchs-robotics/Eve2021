@@ -301,9 +301,9 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		drivetrain.autonomousInit();
 
-		autonomousCommand = new Autonomous_AMESPaths();//AutonomousTestGroup(DriverStation.getInstance().getGameSpecificMessage());
+		//autonomousCommand = new Autonomous_AMESPaths();//AutonomousTestGroup(DriverStation.getInstance().getGameSpecificMessage());
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null) autonomousCommand.start();
+		//if (autonomousCommand != null) autonomousCommand.start();
 
 		visionInit();	
 	}
