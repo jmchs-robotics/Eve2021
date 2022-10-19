@@ -15,7 +15,11 @@ public class Autonomous_AMESPaths extends CommandGroup {
 	
 	public Autonomous_AMESPaths() {
 
-		addSequential(new DriveStraightGyro(-325, -1, true));
+		addSequential(new DriveStraightGyro(-135.5, -1, true)); 
+		
+		//grab command
+
+		addSequential(new DriveStraightGyro(12, -1, true));
 
 		addSequential(new GyroTurn(90, .5, .025));
 
@@ -26,6 +30,8 @@ public class Autonomous_AMESPaths extends CommandGroup {
 		//addSequential(new OpenTongs(false));
 
 		//addSequential(new DriveStraightGyro(230, .99, true));
+
+		addSequential(new DriveStraightGyro(-60.5, -1, true));
 	}
 }
 
