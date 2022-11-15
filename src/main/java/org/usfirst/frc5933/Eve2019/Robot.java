@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
 	public static Tongs grabber;
 	public static EndGameSystem ender;
 	public static TongSpinners spinner;
+	public static Elevator elevator;
 
 	//the camera server and camera objects
 	public static CameraServer server;
@@ -80,6 +81,7 @@ public class Robot extends TimedRobot {
 		roborio = new RoboRio();
 		ender = new EndGameSystem();
 		drivetrain = new Drivetrain();
+		elevator = new Elevator();
 
 		server = RobotMap.server;
 
