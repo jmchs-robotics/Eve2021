@@ -134,10 +134,10 @@ public class OI {
 		subB.whileHeld(new MoveArmDown());
 
 		subX = new JoystickButton(subStick, 3);
-		subX.whileHeld(new VariableCubeControl_Eject());
+		subX.whileHeld(new LowerElevator());
 
 		subY = new JoystickButton(subStick, 4);
-		subY.whileHeld(new VariableCubeControl_Intake());
+		subY.whileHeld(new RaiseElevator());
 
 		subBumperL = new JoystickButton(subStick, 5);
 		subBumperL.whenPressed(new OpenTongs(true));
